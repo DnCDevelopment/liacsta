@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { Layout, Menu } from 'antd';
 
+import Editor from '../Editor/Editor';
 import TableModal from '../TableModal/TableModal';
 
 import { ITableOptions } from '../TableModal/Types';
@@ -62,16 +63,15 @@ const Additions: React.FC = (): JSX.Element => {
               </Menu.Item>
             </Menu>
           </Sider>
-          <Layout style={{ padding: '0 24px 24px', margin: '16px 0' }}>
+          <Layout>
             <Content
               className="site-layout-background"
               style={{
-                padding: 24,
                 margin: 0,
                 minHeight: 280,
               }}
             >
-              Content
+              <Editor />
             </Content>
           </Layout>
         </Layout>

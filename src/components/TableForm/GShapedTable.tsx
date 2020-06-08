@@ -76,8 +76,8 @@ const GShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
           />
         </Form.Item>
         <Form.Item>
-          <RedoOutlined onClick={() => setRotation(rotation + 45)} style={{ fontSize: 32 }} />
-          <UndoOutlined onClick={() => setRotation(rotation - 45)} style={{ fontSize: 32 }} />
+          <RedoOutlined onClick={() => setRotation(rotation + 90)} style={{ fontSize: 32 }} />
+          <UndoOutlined onClick={() => setRotation(rotation - 90)} style={{ fontSize: 32 }} />
         </Form.Item>
         <Form.Item initialValue={count} label="Количество" name="count">
           <InputNumber min={2} onChange={value => setCount(value ? +value : 0)} placeholder="count" value={count} />
