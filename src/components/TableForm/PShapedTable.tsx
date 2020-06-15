@@ -17,7 +17,7 @@ const layout = {
   },
 };
 
-const PShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
+const PShapedTable: React.FC<ITableProps> = ({ handleSave, setModalOpen }): JSX.Element => {
   const [count, setCount] = useState<number>(2);
   const [firstHeight, setFirstHeight] = useState<number>(10);
   const [firstWidth, setFirstWidth] = useState<number>(10);
@@ -32,10 +32,11 @@ const PShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
       await handleSave({
         count,
         position: { x: 0, y: 0 },
-        rotation,
+        rotation: rotation < 0 ? 360 + rotation : rotation,
         size: { firstHeight, firstWidth, secondHeight, secondWidth, thirdHeight, thirdWidth },
         type: 'PShaped',
       });
+      setModalOpen(false);
       message.success(SUCCESS_ADD_TABLE);
     } catch (err) {
       message.success(ERROR);
@@ -94,8 +95,8 @@ const PShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
           />
         </Form.Item>
         <Form.Item>
-          <RedoOutlined onClick={() => setRotation(rotation + 45)} style={{ fontSize: 32 }} />
-          <UndoOutlined onClick={() => setRotation(rotation - 45)} style={{ fontSize: 32 }} />
+          <RedoOutlined onClick={() => setRotation(rotation + 90)} style={{ fontSize: 32 }} />
+          <UndoOutlined onClick={() => setRotation(rotation - 90)} style={{ fontSize: 32 }} />
         </Form.Item>
         <Form.Item initialValue={count} label="Количество" name="count">
           <InputNumber min={2} onChange={value => setCount(value ? +value : 0)} placeholder="count" value={count} />

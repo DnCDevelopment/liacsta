@@ -17,7 +17,7 @@ const layout = {
   },
 };
 
-const GShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
+const GShapedTable: React.FC<ITableProps> = ({ handleSave, setModalOpen }): JSX.Element => {
   const [count, setCount] = useState<number>(2);
   const [firstHeight, setFirstHeight] = useState<number>(20);
   const [firstWidth, setFirstWidth] = useState<number>(10);
@@ -30,10 +30,11 @@ const GShapedTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
       await handleSave({
         count,
         position: { x: 0, y: 0 },
-        rotation,
+        rotation: rotation < 0 ? 360 + rotation : rotation,
         size: { firstHeight, firstWidth, secondHeight, secondWidth },
         type: 'GShaped',
       });
+      setModalOpen(false);
       message.success(SUCCESS_ADD_TABLE);
     } catch (err) {
       message.error(ERROR);

@@ -8,4 +8,5 @@ export type ITableProps = {
     size,
     type,
   }: ITable) => Promise<firebase.firestore.DocumentReference<firebase.firestore.DocumentData>>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

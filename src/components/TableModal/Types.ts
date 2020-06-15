@@ -1,3 +1,7 @@
+export interface IIndexedTable extends ITable {
+  uid: string;
+}
+
 export type ITable = {
   count: number;
   position: {

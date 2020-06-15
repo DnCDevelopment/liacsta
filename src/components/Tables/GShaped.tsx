@@ -1,10 +1,11 @@
 import React, { RefObject, useCallback, useRef } from 'react';
 
 import { Group, Rect } from 'react-konva';
-import { Rect as RectType } from 'konva/types/shapes/Rect';
-import { Vector2d } from 'konva/types/types';
 
 import { buttonDragBound, toRect } from '../../utils/dragBorders';
+
+import { Rect as RectType } from 'konva/types/shapes/Rect';
+import { Vector2d } from 'konva/types/types';
 
 import { IGshapedProps } from './Types';
 

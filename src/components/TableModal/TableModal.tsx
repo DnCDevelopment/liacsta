@@ -32,7 +32,7 @@ const TableModal: React.FC<ITableModalProps> = ({ isModalOpen, setModalOpen, tab
       onCancel={() => setModalOpen(false)}
       visible={isModalOpen}
     >
-      <Table handleSave={handleSave} />
+      <Table handleSave={handleSave} setModalOpen={setModalOpen} />
     </Modal>
   );
 };

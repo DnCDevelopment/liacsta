@@ -17,7 +17,7 @@ const layout = {
   },
 };
 
-const NormalTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
+const NormalTable: React.FC<ITableProps> = ({ handleSave, setModalOpen }): JSX.Element => {
   const [count, setCount] = useState<number>(2);
   const [height, setHeight] = useState<number>(10);
   const [rotation, setRotation] = useState<number>(0);
@@ -28,10 +28,11 @@ const NormalTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
       await handleSave({
         count,
         position: { x: 0, y: 0 },
-        rotation,
+        rotation: rotation < 0 ? 360 + rotation : rotation,
         size: { firstHeight: height, firstWidth: width },
         type: 'NShaped',
       });
+      setModalOpen(false);
       message.success(SUCCESS_ADD_TABLE);
     } catch (err) {
       message.error(ERROR);
@@ -50,8 +51,8 @@ const NormalTable: React.FC<ITableProps> = ({ handleSave }): JSX.Element => {
           <InputNumber min={5} onChange={value => setHeight(value ? +value : 5)} placeholder="height" value={height} />
         </Form.Item>
         <Form.Item>
-          <RedoOutlined onClick={() => setRotation(rotation + 45)} style={{ fontSize: 32 }} />
-          <UndoOutlined onClick={() => setRotation(rotation - 45)} style={{ fontSize: 32 }} />
+          <RedoOutlined onClick={() => setRotation(rotation + 90)} style={{ fontSize: 32 }} />
+          <UndoOutlined onClick={() => setRotation(rotation - 90)} style={{ fontSize: 32 }} />
         </Form.Item>
         <Form.Item initialValue={count} label="Количество" name="count">
           <InputNumber min={2} onChange={value => setCount(value ? +value : 2)} placeholder="count" value={count} />
