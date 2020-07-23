@@ -1,0 +1,12 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    ports:
+      - '3200:3200'
+    container_name: api
+  client:
+    build: ./client
+    ports:
+      - '4200:80'
+    container_name: client
